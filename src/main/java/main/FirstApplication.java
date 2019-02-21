@@ -11,6 +11,8 @@ public class FirstApplication implements CommandLineRunner {
 
     @Autowired
     PersonRepository personRepository;
+    @Autowired
+    ManagerRepository managerRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(FirstApplication.class,args);
@@ -24,5 +26,22 @@ public class FirstApplication implements CommandLineRunner {
 
         Person personFromDb = personRepository.findFirstByName("John");
         System.out.println(personFromDb);
+
+        Manager manager = new Manager();
+        manager.setLastName("Jaure");
+        //manager.setDepartment("IT");
+        //manager.setFirstName("Isai");
+        //manager.setId(1);
+        managerRepository.save(manager);
+
+        Manager managerFromDb =managerRepository.findByLastName("Jaure");
+        System.out.println(managerFromDb);
+
+
+
     }
+
+
+
+
 }
